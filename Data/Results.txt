@@ -1,0 +1,25 @@
+
+
+Let p be prime in all cases.
+
+Method: CheckPrimality(canidate, baseOf, exponent)
+ - Primes of the form: (k^p - 1) / k - 1
+     - k must be > 2.
+     - k cannot be p^n; where n > 1.
+     - all other integers can be used for k, I only tested positive integers.
+ - Notice:
+    - both prime and non-prime exponents were tested in order to show that this method will only return true when the canidate is prime.
+    - some smaller (< k) exponents cannot be tested using this method. specifics are in the code.
+
+Testing results for all exponents from 0 to 5000:
+(3^n - 1)/2 | https://oeis.org/A028491
+    Prime: 3, 7, 13, 71, 103, 541, 1091, 1367, 1627, 4177
+
+(5^n - 1)/4 | https://oeis.org/A004061
+    Prime: 7, 11, 13, 47, 127, 149, 181, 619, 929, 3407
+
+(6^n - 1)/5 | https://oeis.org/A004062
+    Prime: 7, 29, 71, 127, 271, 509, 1049
+
+(10^n - 1)/9 | 
+    Prime: 19, 23, 317, 1031
