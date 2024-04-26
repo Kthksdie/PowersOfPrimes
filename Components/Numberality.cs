@@ -162,8 +162,23 @@ namespace PowersOfPrimes.Components {
         /// <param name="primeExponent"></param>
         /// <returns></returns>
         public static bool IsMersennePrime(this BigInteger canidate, BigInteger primeExponent) {
-            var d = canidate / primeExponent;
-            var x = BigInteger.ModPow(3, d, canidate);
+            BigInteger d, x;
+
+            var lastDigit = canidate % 10;
+            if (lastDigit == 1) {
+                d = (canidate / (primeExponent * 2));
+                x = BigInteger.ModPow(5, d, canidate);
+
+                if (x.IsPowerOfTwo) {
+                    return true;
+                }
+
+                return false;
+            }
+
+            d = (canidate / primeExponent);
+            x = BigInteger.ModPow(3, d, canidate);
+
             if (x.IsPowerOfTwo) {
                 return true;
             }
